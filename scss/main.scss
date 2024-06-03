@@ -1,0 +1,103 @@
+.navegacion {
+    color: $color-header;
+    display: flex;
+  }
+  
+  .logo {
+    flex: 1;
+  
+    img {
+      max-width: 100px;
+      height: auto;
+    }
+  }
+  
+  .navbar {
+    padding: 0;
+  }
+  
+  .sub-home {
+    margin-top: $padding-small;
+    margin-left: $padding-medium;
+    margin-bottom: $padding-large;
+  }
+  
+  .img-home {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto $padding-large auto;
+  }
+  
+  .redes {
+    @include flex-center;
+    flex-direction: column;
+  }
+  
+  .iconos {
+    display: flex;
+    justify-content: center;
+  
+    ul {
+      margin: 5px;
+      padding: 0;
+    }
+  }
+  
+  .icono {
+    max-width: 100%;
+    width: 30%;
+  }
+  
+  .productos {
+    @include grid-template(3, $padding-small);
+    text-align: center;
+  }
+  
+  .producto {
+    width: 400px;
+    margin: 0 auto;
+    height: 400px;
+  }
+  
+  .contenedor {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .mapa {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+  
+  .img-nosotros {
+    margin: auto;
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .contenedor-text {
+    margin: auto;
+    padding: $padding-large;
+  }
+
+  .contenedor-nosotros{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    height: 100%;
+  }
+  

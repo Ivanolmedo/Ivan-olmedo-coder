@@ -1,0 +1,11 @@
+header {
+    background-color: $color-header;
+    align-items: center;
+    padding: $padding-small;
+    font-size: $fuente-principal-large;
+    font-weight: $fuente-principal-weight;
+  
+    .nav-item, .navbar-brand, .container-fluid {
+      background-color: $color-header;
+    }
+  }

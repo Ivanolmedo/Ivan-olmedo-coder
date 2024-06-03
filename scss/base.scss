@@ -1,0 +1,23 @@
+h1, h2, p {
+    font-family: $fuente-principal;
+  }
+  
+  h1 {
+    text-align: center;
+    padding-top: $padding-small;
+    padding-bottom: $padding-small;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+
+body{
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}

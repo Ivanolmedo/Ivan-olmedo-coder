@@ -1,0 +1,46 @@
+form {
+    padding: $padding-medium;
+    border-radius: $border-radius;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contenedor-formulario {
+    @include flex-center;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: $padding-small;
+    margin-bottom: 15px;
+    border: 1px solid $color-input;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    font-size: $fuente-principal-size;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    padding: $padding-small $padding-medium;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $fuente-principal-size;
+    cursor: pointer;
+  
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  .contacto {
+    padding-top: $padding-large;
+  }
+  

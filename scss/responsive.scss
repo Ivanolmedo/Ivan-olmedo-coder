@@ -1,0 +1,29 @@
+@media (max-width: 767px) {
+  .contenedor-footer {
+    position: relative;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .elemento:nth-child(4) {
+    grid-row: 4;
+    grid-column: 1;
+  }
+
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .producto {
+    width: 100%;
+    height: 80%;
+    padding: 0 10px;
+  }
+
+  .mapa {
+    height: 50%;
+  }
+
+  .contenedor-nosotros{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
