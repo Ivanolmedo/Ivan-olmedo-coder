@@ -10,13 +10,7 @@
   }
 
   .productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .producto {
-    width: 100%;
-    height: 80%;
-    padding: 0 10px;
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .mapa {
