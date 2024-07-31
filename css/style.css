@@ -154,6 +154,11 @@ footer {
   height: 100%;
 }
 
+#total-carrito {
+  margin: 15px;
+  font-size: 18px;
+}
+
 form {
   padding: 20px;
   border-radius: 4px;
