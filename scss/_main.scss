@@ -106,3 +106,16 @@
     margin: 15px;
     font-size: 18px;
   }
+
+  .barra-busqueda {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .barra-busqueda input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
