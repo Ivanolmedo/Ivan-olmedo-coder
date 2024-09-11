@@ -55,9 +55,13 @@ function mostrarProductos(filtrados) {
 }
 
 function agregarAlCarrito(precio) {
-  let cantidad = prompt("Ingrese la cantidad del producto");
-  let cantidadEnNumero = Number(cantidad);
-  if (Number.isInteger(cantidadEnNumero) && cantidadEnNumero > 0) {
+  try {
+    let cantidad = prompt("Ingrese la cantidad del producto");
+    let cantidadEnNumero = Number(cantidad);
+    if (!Number.isInteger(cantidadEnNumero) || cantidadEnNumero <= 0) {
+      throw new Error("Cantidad no válida. Por favor ingrese un número entero mayor que 0.");
+    }
+    
     let confirmar = confirm("¿Desea agregar el producto al carrito?");
     if (confirmar) {
       let precioTotal = cantidadEnNumero * precio;
@@ -67,8 +71,10 @@ function agregarAlCarrito(precio) {
     } else {
       alert("Producto no agregado al carrito");
     }
-  } else {
-    alert("Por favor, ingrese una cantidad válida");
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  } finally {
+    console.log("Proceso de agregar al carrito finalizado.");
   }
 }
 
