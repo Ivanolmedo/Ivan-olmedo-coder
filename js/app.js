@@ -56,23 +56,64 @@ function mostrarProductos(filtrados) {
 
 function agregarAlCarrito(precio) {
   try {
-    let cantidad = prompt("Ingrese la cantidad del producto");
-    let cantidadEnNumero = Number(cantidad);
-    if (!Number.isInteger(cantidadEnNumero) || cantidadEnNumero <= 0) {
-      throw new Error("Cantidad no válida. Por favor ingrese un número entero mayor que 0.");
-    }
-    
-    let confirmar = confirm("¿Desea agregar el producto al carrito?");
-    if (confirmar) {
-      let precioTotal = cantidadEnNumero * precio;
-      total += precioTotal;
-      document.getElementById("total").textContent = total.toFixed(2);
-      alert("El producto ha sido agregado al carrito");
-    } else {
-      alert("Producto no agregado al carrito");
-    }
+    // Solicitar cantidad del producto usando SweetAlert
+    Swal.fire({
+      title: 'Ingrese la cantidad del producto',
+      input: 'number',
+      inputAttributes: {
+        min: 1,
+        step: 1
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let cantidadEnNumero = Number(result.value);
+        if (!Number.isInteger(cantidadEnNumero) || cantidadEnNumero <= 0) {
+          throw new Error("Cantidad no válida. Por favor ingrese un número entero mayor que 0.");
+        }
+
+        // Confirmar si se desea agregar al carrito
+        Swal.fire({
+          title: '¿Desea agregar el producto al carrito?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No'
+        }).then((confirmResult) => {
+          if (confirmResult.isConfirmed) {
+            let precioTotal = cantidadEnNumero * precio;
+            total += precioTotal;
+            document.getElementById("total").textContent = total.toFixed(2);
+
+            // Mostrar alerta de éxito
+            Swal.fire({
+              title: 'Producto agregado',
+              text: 'El producto ha sido agregado al carrito',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            });
+          } else {
+            // Mostrar alerta de cancelación
+            Swal.fire({
+              title: 'Producto no agregado',
+              text: 'El producto no ha sido agregado al carrito',
+              icon: 'info',
+              timer: 1500,
+              showConfirmButton: false
+            });
+          }
+        });
+      }
+    });
   } catch (error) {
-    alert(`Error: ${error.message}`);
+    Swal.fire({
+      title: 'Error',
+      text: error.message,
+      icon: 'error'
+    });
   } finally {
     console.log("Proceso de agregar al carrito finalizado.");
   }
