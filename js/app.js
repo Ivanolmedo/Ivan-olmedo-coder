@@ -33,18 +33,6 @@ class Producto {
   }
 }
 
-const productos = [
-  new Producto('Torta Mozart', 10000, '../assets/img/producto1.jpg'),
-  new Producto('Torta Milhojas', 10000, '../assets/img/producto2.jpg'),
-  new Producto('Oreo Berries', 3000, '../assets/img/producto3.jpg'),
-  new Producto('Torta Berries', 2500, '../assets/img/producto4.jpg'),
-  new Producto('Torta Oreo', 3000, '../assets/img/producto5.jpg'),
-  new Producto('Torta Milhojas', 3000, '../assets/img/producto6.jpg'),
-  new Producto('Torta', 3000, '../assets/img/producto7.jpg'),
-  new Producto('Cupcakes', 2000, '../assets/img/producto8.jpg'),
-  new Producto('Torta cumpleaños', 10000, '../assets/img/producto9.jpg')
-];
-
 const contenedorProductos = document.getElementById('productos');
 
 function mostrarProductos(filtrados) {
@@ -119,8 +107,26 @@ function agregarAlCarrito(precio) {
   }
 }
 
-// Mostrar todos los productos inicialmente
-mostrarProductos(productos);
+// Fetch para obtener productos desde la API JSONPlaceholder (simulando un archivo JSON)
+function cargarProductos() {
+  fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(json => {
+      // Crear productos dinámicamente basados en los datos recibidos
+      const productosCargados = json.slice(0, 9).map(item => {
+        return new Producto(`Producto ${item.id}`, item.userId * 1000, '../assets/img/producto1.jpg');
+      });
+      mostrarProductos(productosCargados);
+    })
+    .catch(error => {
+      console.error('Error al cargar productos:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudieron cargar los productos',
+        icon: 'error'
+      });
+    });
+}
 
 // Filtrar productos según la barra de búsqueda
 document.getElementById('busqueda').addEventListener('input', (e) => {
@@ -132,3 +138,6 @@ document.getElementById('busqueda').addEventListener('input', (e) => {
 });
 
 let total = 0;
+
+// Llamada para cargar los productos al cargar la página
+cargarProductos();
